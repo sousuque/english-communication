@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>英語重要事項データベース</title>
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-<style id="app-style">
+<style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Yu Gothic", sans-serif;
@@ -184,100 +183,11 @@
     .card { padding: 0.875rem 1rem; }
   }
 
-  .badge-add { background: #fde3e3; color: #9c2b2b; }
-  .editor-wrap {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-  .editor-panel {
-    background: #fff;
-    border: 0.5px solid #dddbd2;
-    border-radius: 12px;
-    padding: 1.1rem 1.25rem 1rem;
-    margin: 1rem 0 0.25rem;
-  }
-  .editor-title {
-    font-size: 13px;
-    font-weight: 500;
-    color: #5f5e5a;
-    margin-bottom: 0.75rem;
-    letter-spacing: 0.02em;
-  }
-  .editor-grid {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
-    flex-wrap: wrap;
-  }
-  .field { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 120px; }
-  .field.narrow { flex: 0 0 90px; }
-  .field label { font-size: 11px; color: #888780; }
-  .field input, .field textarea, .field select {
-    font-size: 14px;
-    padding: 7px 10px;
-    border: 0.5px solid #b4b2a9;
-    border-radius: 8px;
-    background: #f5f4f0;
-    color: #1a1a18;
-    outline: none;
-    font-family: inherit;
-    resize: vertical;
-  }
-  .field input:focus, .field textarea:focus, .field select:focus { border-color: #5f5e5a; background: #fff; }
-  .editor-actions { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; align-items: center; }
-  .btn {
-    font-size: 13px;
-    padding: 8px 16px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
-    transition: opacity 0.15s;
-  }
-  .btn:hover { opacity: 0.85; }
-  .btn-add { background: #1a1a18; color: #fff; }
-  .btn-export { background: #e6f1fb; color: #0c447c; border: 0.5px solid #85b7eb; }
-  .btn-cancel { background: transparent; color: #888780; border: 0.5px solid #b4b2a9; }
-  .editor-msg { font-size: 12px; margin-top: 8px; min-height: 16px; }
-  .editor-msg.success { color: #3b6d11; }
-  .editor-msg.error { color: #a3260f; }
-  .editor-badge {
-    font-size: 11px;
-    padding: 2px 9px;
-    border-radius: 10px;
-    background: #eeedfe;
-    color: #3c3489;
-  }
-  .card-actions {
-    display: flex;
-    gap: 4px;
-    flex-shrink: 0;
-    margin-left: 4px;
-  }
-  .icon-btn {
-    font-size: 11px;
-    padding: 3px 9px;
-    border-radius: 8px;
-    border: 0.5px solid #dddbd2;
-    background: #f5f4f0;
-    color: #5f5e5a;
-    cursor: pointer;
-    font-family: inherit;
-    white-space: nowrap;
-  }
-  .icon-btn:hover { border-color: #888780; color: #1a1a18; }
-  .icon-btn.danger:hover { border-color: #c0392b; color: #c0392b; }
-  @keyframes flashHighlight {
-    0%   { background: #fff6d8; border-color: #e8c766; }
-    100% { background: #fff; border-color: #dddbd2; }
-  }
-  .card.just-added { animation: flashHighlight 1.8s ease; }
-</style>
+  .badge-add { background: #fde3e3; color: #9c2b2b; }</style>
 </head>
 <body>
 <header>
-  <h1>英語重要事項データベース 更新版</h1>
+  <h1>英語重要事項データベース</h1>
   <div class="search-bar">
     <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
     <input type="text" id="searchInput" placeholder="キーワードで検索（日本語・英語）...">
@@ -867,7 +777,7 @@ let data = [
     "cat": "多義語",
     "title": "given の多義",
     "badge": "word",
-    "note": "接続詞: ① もし〜ならば (if) ② 〜を考慮に入れると\n前置詞: ① もし〜ならば、〜と仮定すれば ② 〜を考慮に入れると\n形容詞: 与えられた、一定の"
+    "note": "接続詞: ① もし〜ならば (if)　② 〜を考慮に入れると\n前置詞: ① もし〜ならば、〜と仮定すれば　② 〜を考慮に入れると\n形容詞: 与えられた、一定の"
   },
   {
     "id": 39,
@@ -1321,259 +1231,259 @@ let data = [
     "note": "「彼は経済学を勉強するためにドイツへ行った。」\n① He went to Germany so as to study economics.\n② He went to Germany in order to study economics.\n③ He went to Germany so that he might study economics.\n④ He went to Germany in order that he might study economics.\n⑤ He went to Germany for the purpose of studying economics.\n⑥ He went to Germany with a view to studying economics.\n⑦ He went to Germany with the view of studying economics."
   },
   {
-    "id": "a77",
+    "id": "a1",
     "cat": "語法",
     "title": "～しそこなう",
     "badge": "word",
     "note": "fail to do 「doしそこなう」\ncannot (never) fail to do 「必ずdoする」(強い肯定)"
   },
   {
-    "id": "a78",
+    "id": "a2",
     "cat": "同意語表現",
     "title": "約束を守る",
     "badge": "synonym",
     "note": "keep one's promise = keep one's secret"
   },
   {
-    "id": "a79",
+    "id": "a3",
     "cat": "多義語",
     "title": "howeverの多義",
     "badge": "word",
     "note": "1.しかしながら\n2.たとえどんなに～でも = no matter how"
   },
   {
-    "id": "a80",
+    "id": "a4",
     "cat": "多義語",
     "title": "whatever",
     "badge": "word",
     "note": "1.～するものは何でも\n=anything that\n2.何が～しても\n=no matter what"
   },
   {
-    "id": "a81",
+    "id": "a5",
     "cat": "多義語",
     "title": "whenever",
     "badge": "word",
     "note": "1.～するときはいつでも\n=at any time when\n2.たとえいつ～しようとも\n=no matter when"
   },
   {
-    "id": "a82",
+    "id": "a6",
     "cat": "多義語",
     "title": "wherever",
     "badge": "word",
     "note": "1.～するところならどこでも\n=at any place where\n2.たとえどこで～しようとも\n=no matter where"
   },
   {
-    "id": "a83",
+    "id": "a7",
     "cat": "語彙",
     "title": "言ってみれば，いわば",
     "badge": "word",
     "note": "as it were = so to speak"
   },
   {
-    "id": "a84",
+    "id": "a8",
     "cat": "文法",
     "title": "関係代名詞のwhat",
     "badge": "gram",
     "note": "what = the thing which = that which\n名詞2つ分の働きをする。"
   },
   {
-    "id": "a85",
+    "id": "a9",
     "cat": "文法",
     "title": "受動の意味を持つ助動詞",
     "badge": "gram",
     "note": "need, want, require\nThis car needs repairing.\nThis car needs to be repaired.\n=We must have this car repaired."
   },
   {
-    "id": "a86",
+    "id": "a10",
     "cat": "文法",
     "title": "接続詞のso that",
     "badge": "gram",
     "note": "1.目的(so that S may V)\n2.結果(=and)→前から訳し下げる"
   },
   {
-    "id": "a87",
+    "id": "a11",
     "cat": "多義語",
     "title": "as it is",
     "badge": "word",
     "note": "1.(文頭・節頭で)「実際」(=in fact)\n2.(文中で)「そのまま,ありのまま」"
   },
   {
-    "id": "a88",
+    "id": "a12",
     "cat": "同意語表現",
     "title": "決断する",
     "badge": "synonym",
     "note": "come to a decision = make a decision = decide"
   },
   {
-    "id": "a89",
+    "id": "a13",
     "cat": "語法",
     "title": "前置詞+抽象名詞",
     "badge": "word",
     "note": "with+抽象名詞 = 副詞\nof+抽象名詞=形容詞\nof use = useful\nof help = helpful"
   },
   {
-    "id": "a90",
+    "id": "a14",
     "cat": "語彙",
     "title": "比較級を用いた表現",
     "badge": "word",
     "note": "more or less「多かれ少なかれ」\nbetter or worse「良かれ悪かれ」\nsooner or later「早かれ遅かれ」"
   },
   {
-    "id": "a91",
+    "id": "a15",
     "cat": "多義語",
     "title": "rather",
     "badge": "word",
     "note": "1.かなり[程度]\n2.むしろ[比較]"
   },
   {
-    "id": "a92",
+    "id": "a16",
     "cat": "多義語",
     "title": "substituteの多義",
     "badge": "word",
     "note": "動:substitute A for B「AをBのかわりにする」\nsubstitute for「～の代わりになる」\n形:代わりの,代理の\n名:代わりのもの,代理物"
   },
   {
-    "id": "a93",
+    "id": "a17",
     "cat": "多義語",
     "title": "contemporary",
     "badge": "word",
     "note": "1.(=modern)現代の\n2.同時代の"
   },
   {
-    "id": "a94",
+    "id": "a18",
     "cat": "多義語",
     "title": "order",
     "badge": "word",
     "note": "名詞\n1.秩序、順序\n2.注文\n動詞:命令する\norder O to V"
   },
   {
-    "id": "a95",
+    "id": "a19",
     "cat": "多義語",
     "title": "anxious",
     "badge": "word",
     "note": "1.心配した(be anxious about)\n= be worried about\n2.切望した(be anxious for[to])\n= be eager for = long for \n= long to V = yearn for = yearn to V"
   },
   {
-    "id": "a96",
+    "id": "a20",
     "cat": "多義語",
     "title": "certain",
     "badge": "word",
     "note": "限定用法\nある～\n\n叙述用法\n(人が主語)確信して\n(ものが主語)確かな"
   },
   {
-    "id": "a97",
+    "id": "a21",
     "cat": "同意語表現",
     "title": "be to do構文",
     "badge": "synonym",
     "note": "1.確定的未来 予定・計画\n2.確定的未来 運命\n3.意志・意図・願望(条件節内で用いる)\n4.義務・命令\n5.可能"
   },
   {
-    "id": "a98",
+    "id": "a22",
     "cat": "同意語表現",
     "title": "取り除く",
     "badge": "synonym",
     "note": "get rid of = rid oneself of = eliminate = remove = abandon = discard"
   },
   {
-    "id": "a99",
+    "id": "a23",
     "cat": "同意語表現",
     "title": "manyとmuch",
     "badge": "synonym",
     "note": "many = a large number of\n\nmuch = a large amount of"
   },
   {
-    "id": "a100",
+    "id": "a24",
     "cat": "同意語表現",
     "title": "part",
     "badge": "synonym",
     "note": "part from 人「～と別れる」\n\npart with 物「～を手放す」"
   },
   {
-    "id": "a101",
+    "id": "a25",
     "cat": "語彙",
     "title": "reason",
     "badge": "word",
     "note": "名詞 1.理由\n   2.理性,思考,推察,推理\n   3.理屈,道理\n\n動詞 「～を推論する」"
   },
   {
-    "id": "a102",
+    "id": "a26",
     "cat": "同意語表現",
     "title": "直面する",
     "badge": "synonym",
     "note": "be faced with = face = be confronted with = confront"
   },
   {
-    "id": "a103",
+    "id": "a27",
     "cat": "同意語表現",
     "title": "～に由来する",
     "badge": "synonym",
     "note": "originate from = result from = come from"
   },
   {
-    "id": "a104",
+    "id": "a28",
     "cat": "同意語表現",
     "title": "言い換えると",
     "badge": "synonym",
     "note": "in other words = namely = that is = that is to say = to put it in another way"
   },
   {
-    "id": "a105",
+    "id": "a29",
     "cat": "同意語表現",
     "title": "それにもかかわらず",
     "badge": "synonym",
     "note": "nonetheless= nevertheless = all the same"
   },
   {
-    "id": "a106",
+    "id": "a30",
     "cat": "多義語",
     "title": "prevail",
     "badge": "word",
     "note": "自動詞\n1.～に広く行き渡っている,流布している\n(後ろにin,among)\n\n2.～に勝る,～を圧倒する\n(後ろにover,against)\n\n3.功を奏する,うまくいく,成功する\n\n4.prevail on 人 to do\n「人にdoするよう説得する」\n= persuade 人 to do"
   },
   {
-    "id": "a107",
+    "id": "a31",
     "cat": "多義語",
     "title": "assume",
     "badge": "word",
     "note": "他動詞\n1.～だと仮定する,前提とする\n(that節を目的語に取ることが多い)\n2.(責任,任務を)引き受ける\n3.(態度を)取る\n4.〜のふりをする = pretend\n5.〜を横領する\n\n名詞:assumption"
   },
   {
-    "id": "a108",
+    "id": "a32",
     "cat": "多義語",
     "title": "attribute",
     "badge": "word",
     "note": "attribute A to B = ascribe A to B\n「AはBに帰する」\n= 「AはBのおかげだと思う」\n= 「AはBのせいだと思う」\n= 「Aの原因はBにあると思う」"
   },
   {
-    "id": "a109",
+    "id": "a33",
     "cat": "文法",
     "title": "分詞構文の識別",
     "badge": "gram",
     "note": "分詞構文の意味\n後ろにある時は「付帯状況」\n文頭にある時は「原因理由」"
   },
   {
-    "id": "a110",
+    "id": "a34",
     "cat": "多義語",
     "title": "contribute to",
     "badge": "word",
     "note": "1.〜に貢献する\n2.〜の一因になる = lead to"
   },
   {
-    "id": "a111",
+    "id": "a35",
     "cat": "語法",
     "title": "presuade",
     "badge": "word",
     "note": "persuade O to V [into Ving]\n= talk O into Ving\n「OにVするよう説得する」\n\npersuade O out of Ving\n= talk O out of Ving\n「OにVしないように説得する」"
   },
   {
-    "id": "a112",
+    "id": "a36",
     "cat": "多義語",
     "title": "due",
     "badge": "word",
     "note": "due to (前置詞) 同意語33を参照\n\ndue (形容詞)\n1.到着予定の The train is due in ten minutes.\n「電車は10分後に到着予定だ。」\nWhen is her baby due?\n「彼女の赤ちゃんはいつ産まれる予定ですか？」\n2.十分な、必要なだけの\nafter due consideration\n「十分な考慮」"
   },
   {
-    "id": "a113",
+    "id": "a37",
     "cat": "文法",
     "title": "付帯状況のwith",
     "badge": "gram",
@@ -1581,10 +1491,10 @@ let data = [
   }
 ];
 </script>
-<script id="logic-script">
+<script>
 
 
-const cats = ["すべて","同意語表現","前置詞","文法","多義語","語法","語彙","重要構文"];
+const cats = ["すべて","同意語表現","前置詞","文法","多義語","語法","語彙","重要構文","追加項目"];
 const badgeMap = {synonym:"badge-syn",phrase:"badge-phrase",prep:"badge-prep",gram:"badge-gram",constr:"badge-constr",word:"badge-word",add:"badge-add"};
 const badgeLabel = {synonym:"同意語",phrase:"重要表現",prep:"前置詞",gram:"文法",constr:"構文",word:"語法・多義",add:"追加項目"};
 let activeCat = "すべて";
@@ -1616,7 +1526,6 @@ function render() {
   filtered.forEach(d => {
     const div = document.createElement("div");
     div.className = "card" + (openCards.has(d.id) ? " open" : "");
-    div.dataset.id = String(d.id);
     const bClass = badgeMap[d.badge] || "badge-syn";
     const bLabel = badgeLabel[d.badge] || "";
     let bodyHTML = "";
@@ -1632,31 +1541,13 @@ function render() {
       bodyHTML += `<div class="note">${escapeHtml(d.note)}</div>`;
     }
     const chevronSVG = `<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>`;
-    const isUserAdded = d.isCustom === true; // カスタム追加された項目かを判定
-    const actionsHTML = isUserAdded
-      ? `<div class="card-actions">
-          <button class="icon-btn" data-action="edit">編集</button>
-          <button class="icon-btn danger" data-action="delete">削除</button>
-        </div>`
-      : "";
     div.innerHTML = `
       <div class="card-header">
         <span class="card-num">${d.id}</span>
         <span class="card-title">${escapeHtml(d.title)}<span class="badge ${bClass}">${bLabel}</span></span>
-        ${actionsHTML}
         ${chevronSVG}
       </div>
       <div class="card-body">${bodyHTML}</div>`;
-    if (isUserAdded) {
-      div.querySelector('[data-action="edit"]').addEventListener("click", (ev) => {
-        ev.stopPropagation();
-        startEdit(d.id);
-      });
-      div.querySelector('[data-action="delete"]').addEventListener("click", (ev) => {
-        ev.stopPropagation();
-        deleteEntry(d.id);
-      });
-    }
     div.addEventListener("click", () => {
       if (openCards.has(d.id)) openCards.delete(d.id);
       else openCards.add(d.id);
@@ -1685,194 +1576,6 @@ function renderFilters() {
 document.getElementById("searchInput").addEventListener("input", render);
 renderFilters();
 render();
-
-// ---- 追加・編集・削除・出力機能 ----
-let editingId = null;
-
-function nextId() {
-  const nums = data.map(d => (typeof d.id === "number" ? d.id : parseInt(d.id, 10))).filter(n => !isNaN(n));
-  return nums.length ? Math.max(...nums) + 1 : 1;
-}
-
-function resetForm() {
-  editingId = null;
-  document.getElementById("newId").value = nextId();
-  document.getElementById("newCat").value = "同意語表現"; // リセット時はデフォルトカテゴリに
-  document.getElementById("newTitle").value = "";
-  document.getElementById("newNote").value = "";
-  document.getElementById("submitBtn").textContent = "追加する";
-  document.getElementById("cancelBtn").style.display = "none";
-}
-
-function cancelEdit() {
-  resetForm();
-  const msg = document.getElementById("editorMsg");
-  msg.textContent = "";
-  msg.className = "editor-msg";
-}
-
-function startEdit(id) {
-  const entry = data.find(d => String(d.id) === String(id));
-  if (!entry) return;
-  editingId = id;
-  document.getElementById("newId").value = String(entry.id);
-  document.getElementById("newCat").value = entry.cat || "同意語表現"; // 編集時にカテゴリを読み込む
-  document.getElementById("newTitle").value = entry.title;
-  document.getElementById("newNote").value = entry.note || "";
-  document.getElementById("submitBtn").textContent = "更新する";
-  document.getElementById("cancelBtn").style.display = "inline-block";
-  document.querySelector(".editor-panel").scrollIntoView({ behavior: "smooth", block: "start" });
-  document.getElementById("newTitle").focus();
-}
-
-function highlightCard(id) {
-  setTimeout(() => {
-    const el = document.querySelector(`.card[data-id="${CSS.escape(String(id))}"]`);
-    if (!el) return;
-    el.scrollIntoView({ behavior: "smooth", block: "center" });
-    el.classList.add("just-added");
-    setTimeout(() => el.classList.remove("just-added"), 1800);
-  }, 60);
-}
-
-function addEntry() {
-  const idInput = document.getElementById("newId");
-  const catInput = document.getElementById("newCat");
-  const titleInput = document.getElementById("newTitle");
-  const noteInput = document.getElementById("newNote");
-  const msg = document.getElementById("editorMsg");
-
-  const idVal = idInput.value.trim();
-  const catVal = catInput.value;
-  const titleVal = titleInput.value.trim();
-  const noteVal = noteInput.value.trim();
-
-  if (!idVal || !titleVal || !noteVal) {
-    msg.textContent = "通し番号・項目・説明をすべて入力してください。";
-    msg.className = "editor-msg error";
-    return;
-  }
-
-  const duplicate = data.some(d => String(d.id) === idVal && String(d.id) !== String(editingId));
-  if (duplicate) {
-    msg.textContent = "その通し番号は既に使われています。";
-    msg.className = "editor-msg error";
-    return;
-  }
-
-  const idNum = /^\d+$/.test(idVal) ? parseInt(idVal, 10) : idVal;
-  
-  // カテゴリからバッジのクラス名を判定
-  const badgeMapForCat = {
-    "同意語表現": "synonym",
-    "前置詞": "prep",
-    "文法": "gram",
-    "多義語": "word",
-    "語法": "word",
-    "語彙": "word",
-    "重要構文": "constr"
-  };
-  const badgeVal = badgeMapForCat[catVal] || "add";
-
-  if (editingId !== null) {
-    const idx = data.findIndex(d => String(d.id) === String(editingId));
-    if (idx === -1) {
-      msg.textContent = "編集対象の項目が見つかりませんでした。";
-      msg.className = "editor-msg error";
-      resetForm();
-      return;
-    }
-    // 更新
-    data[idx] = { ...data[idx], id: idNum, cat: catVal, title: titleVal, badge: badgeVal, note: noteVal, isCustom: true };
-    resetForm();
-    activeCat = catVal;
-    renderFilters();
-    render();
-    msg.textContent = `「${titleVal}」を更新しました（全${data.length}件）。`;
-    msg.className = "editor-msg success";
-    highlightCard(idNum);
-    return;
-  }
-
-  // 新規追加
-  data.push({ id: idNum, cat: catVal, title: titleVal, badge: badgeVal, note: noteVal, isCustom: true });
-  openCards.add(idNum);
-  resetForm();
-  activeCat = catVal;
-  renderFilters();
-  render();
-  msg.textContent = `「${titleVal}」を追加しました（全${data.length}件）。`;
-  msg.className = "editor-msg success";
-  highlightCard(idNum);
-}
-
-function deleteEntry(id) {
-  const entry = data.find(d => String(d.id) === String(id));
-  if (!entry) return;
-  const ok = confirm(`「${entry.title}」を削除しますか？この操作は取り消せません。`);
-  if (!ok) return;
-  data = data.filter(d => String(d.id) !== String(id));
-  openCards.delete(id);
-  if (String(editingId) === String(id)) resetForm();
-  renderFilters();
-  render();
-  const msg = document.getElementById("editorMsg");
-  msg.textContent = `「${entry.title}」を削除しました（全${data.length}件）。`;
-  msg.className = "editor-msg success";
-}
-
-function exportHTML() {
-  const dataStr = JSON.stringify(data, null, 2);
-  const styleText = document.getElementById("app-style").textContent;
-  const logicText = document.getElementById("logic-script").textContent;
-  const parts = [
-    "<!DOCTYPE html>",
-    "<html lang=\"ja\">",
-    "<head>",
-    "<meta charset=\"UTF-8\">",
-    "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
-    "<title>英語重要事項データベース（編集・出力版）</title>",
-    "<style id=\"app-style\">" + styleText + "</style>",
-    "</head>",
-    "<body>",
-    "<header>",
-    "  <h1>英語重要事項データベース（編集・出力版）</h1>",
-    "  <div class=\"search-bar\">",
-    "    <svg class=\"search-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"/></svg>",
-    "    <input type=\"text\" id=\"searchInput\" placeholder=\"キーワードで検索（日本語・英語）...\">",
-    "  </div>",
-    "  <div class=\"filter-bar\" id=\"filterBar\"></div>",
-    "  <div class=\"stats\" id=\"stats\"></div>",
-    "</header>",
-    "<main id=\"cards\"></main>",
-    "<" + "script id=\"data-script\">",
-    "let data = " + dataStr + ";",
-    "</" + "script>",
-    "<" + "script id=\"logic-script\">",
-    logicText,
-    "</" + "script>",
-    "</body>",
-    "</html>"
-  ];
-  const html = parts.join("\n");
-
-  const blob = new Blob([html], { type: "text/html" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  const now = new Date();
-  const stamp = now.getFullYear() + String(now.getMonth() + 1).padStart(2, "0") + String(now.getDate()).padStart(2, "0");
-  a.href = url;
-  a.download = `英語重要事項データベース_${stamp}.html`;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-
-  const msg = document.getElementById("editorMsg");
-  msg.textContent = `HTMLファイルを出力しました（全${data.length}件）。`;
-  msg.className = "editor-msg success";
-}
-
 
 </script>
 </body>
