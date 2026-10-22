@@ -53,6 +53,24 @@
     transition: border-color 0.15s;
   }
   .search-bar input:focus { border-color: #5f5e5a; background: #fff; }
+  .clear-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+    font-size: 12px;
+    font-family: inherit;
+    padding: 7px 12px;
+    border: 0.5px solid #b4b2a9;
+    border-radius: 8px;
+    background: #fff;
+    color: #5f5e5a;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .clear-btn svg { width: 14px; height: 14px; }
+  .clear-btn:hover:not(:disabled) { border-color: #5f5e5a; color: #1a1a18; }
+  .clear-btn:disabled { opacity: 0.4; cursor: default; }
   .filter-bar {
     display: flex;
     gap: 6px;
@@ -198,7 +216,11 @@
   <h1>英語重要事項データベース</h1>
   <div class="search-bar">
     <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    <input type="text" id="searchInput" placeholder="キーワードで検索（日本語・英語）..." oninput="render()">
+    <input type="text" id="searchInput" placeholder="キーワードで検索（日本語・英語）..." oninput="onSearchInput()">
+    <button type="button" class="clear-btn" id="clearBtn" onclick="clearSearch()" aria-label="検索をクリア" title="検索をクリア" disabled>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      <span>クリア</span>
+    </button>
   </div>
   <div class="filter-bar" id="filterBar"></div>
   <div class="stats" id="stats"></div>
@@ -217,14 +239,16 @@
 
    【通し番号(id)の振り方】系列ごとに別々に数える。
    ・番号のみ（例: 1, 2, 3…）: 同意語表現プリントの項目。
-       数値で記述（id:59）。引用符を付けない。
-   ・K + 番号（例: "K1", "K2"…）: 重要構文。文字列で記述。
+       数値で記述（id:59）。引用符を付けない。現在 1〜76。
+   ・K + 番号（例: "K1", "K2"…）: 重要構文。文字列で記述。現在 K1〜K6。
    ・a + 番号（例: "a1", "a2"…）: 授業内で扱った事項。文字列で記述。
+       現在 a1〜a71。次に追加する項目は a72 から。
    ・各系列とも 1 から始めて、欠番なしで連番にする。
-       （最後の番号 + 1 を新しい項目に使う。a系列の最後は配列末尾で確認）
+       （各系列の最後の番号 + 1 を新しい項目に使う）
    ・項目を削除したら、後続の番号を詰めて欠番をなくす。
-       ※本文中に「同意語表現33を参照」のような番号参照があるため、
-         同意語表現プリントの番号を変更する場合は参照箇所も確認すること。
+       ※本文中に「同意語表現33を参照」「同意語表現41を参照」のような
+         番号参照があるため、同意語表現プリントの番号を変更する場合は
+         参照箇所も確認すること。
    ・元の資料（メモなど）で空行で区切られたまとまりを1項目とする。
 
    【項目の書式】
@@ -479,6 +503,41 @@ function renderFilters() {
     bar.appendChild(btn);
   });
 }
+
+function updateClearBtn() {
+  document.getElementById("clearBtn").disabled = !document.getElementById("searchInput").value;
+}
+
+function onSearchInput() {
+  updateClearBtn();
+  render();
+}
+
+function clearSearch() {
+  const input = document.getElementById("searchInput");
+  input.value = "";
+  updateClearBtn();
+  render();
+  input.focus();
+}
+
+// 「/」キーで検索バーにフォーカス（入力欄で文字を打っているときは除く）
+document.addEventListener("keydown", e => {
+  if (e.key !== "/" || e.ctrlKey || e.metaKey || e.altKey || e.isComposing) return;
+  const t = e.target;
+  if (t.isContentEditable || ["INPUT", "TEXTAREA", "SELECT"].includes(t.tagName)) return;
+  e.preventDefault();
+  const input = document.getElementById("searchInput");
+  input.focus();
+  input.select();
+});
+
+// 検索バーで Esc を押すとクリア（空ならフォーカスを外す）
+document.getElementById("searchInput").addEventListener("keydown", e => {
+  if (e.key !== "Escape" || e.isComposing) return;
+  if (e.target.value) clearSearch();
+  else e.target.blur();
+});
 
 renderFilters();
 render();
