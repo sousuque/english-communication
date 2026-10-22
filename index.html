@@ -53,24 +53,6 @@
     transition: border-color 0.15s;
   }
   .search-bar input:focus { border-color: #5f5e5a; background: #fff; }
-  .clear-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    flex-shrink: 0;
-    font-size: 12px;
-    font-family: inherit;
-    padding: 7px 12px;
-    border: 0.5px solid #b4b2a9;
-    border-radius: 8px;
-    background: #fff;
-    color: #5f5e5a;
-    cursor: pointer;
-    transition: all 0.15s;
-  }
-  .clear-btn svg { width: 14px; height: 14px; }
-  .clear-btn:hover:not(:disabled) { border-color: #5f5e5a; color: #1a1a18; }
-  .clear-btn:disabled { opacity: 0.4; cursor: default; }
   .filter-bar {
     display: flex;
     gap: 6px;
@@ -216,11 +198,7 @@
   <h1>英語重要事項データベース</h1>
   <div class="search-bar">
     <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    <input type="text" id="searchInput" placeholder="キーワードで検索（日本語・英語）..." oninput="onSearchInput()">
-    <button type="button" class="clear-btn" id="clearBtn" onclick="clearSearch()" aria-label="検索をクリア" title="検索をクリア" disabled>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      <span>クリア</span>
-    </button>
+    <input type="text" id="searchInput" placeholder="キーワードで検索（日本語・英語）..." oninput="render()">
   </div>
   <div class="filter-bar" id="filterBar"></div>
   <div class="stats" id="stats"></div>
@@ -229,6 +207,46 @@
 <main id="cards"></main>
 
 <script>
+/* =====================================================================
+   項目追加のルール（引き継ぎ用）
+   ---------------------------------------------------------------------
+   【データの置き場所】
+   下の data 配列に、1項目 = 1オブジェクトとして追加する。
+   カンマ区切り。配列の最後の項目の後ろにはカンマを付けない。
+   画面には配列の記述順に表示されるため、各系列の末尾に追加すること。
+
+   【通し番号(id)の振り方】系列ごとに別々に数える。
+   ・番号のみ（例: 1, 2, 3…）: 同意語表現プリントの項目。
+       数値で記述（id:59）。引用符を付けない。
+   ・K + 番号（例: "K1", "K2"…）: 重要構文。文字列で記述。
+   ・a + 番号（例: "a1", "a2"…）: 授業内で扱った事項。文字列で記述。
+   ・各系列とも 1 から始めて、欠番なしで連番にする。
+       （最後の番号 + 1 を新しい項目に使う。a系列の最後は配列末尾で確認）
+   ・項目を削除したら、後続の番号を詰めて欠番をなくす。
+       ※本文中に「同意語表現33を参照」のような番号参照があるため、
+         同意語表現プリントの番号を変更する場合は参照箇所も確認すること。
+   ・元の資料（メモなど）で空行で区切られたまとまりを1項目とする。
+
+   【項目の書式】
+   {id:"a72", cat:"多義語", title:"○○ の多義", badge:"word",
+    items:["表現1","表現2"],   // 言い換え表現などを並べる（任意）
+    extra:[{label:"小見出し", items:["表現A","表現B"]}], // 小見出し付きの追加リスト（任意）
+    note:"説明文\n改行は \n で書く"}                    // 補足・例文・多義の説明（任意）
+   ・items / extra / note は必要なものだけ使う（併用も可）。
+   ・文字列内で " を使う場合は \" とエスケープする。
+   ・note の < > は画面上で文字として表示される（HTMLタグは使えない）。
+   ・多義の列挙は ① ② ③ …、見出しの日本語訳は「 」を使う。
+
+   【cat（カテゴリ）】下の cats 配列にあるものだけ使う。
+   同意語表現 / 前置詞 / 文法 / 多義語 / 語法 / 語彙 / 重要構文
+   （新しく増やす場合は cats 配列にも追加すること）
+
+   【badge（ラベルの種類）】cat とは別に指定する。
+   synonym = 同意語 / phrase = 重要表現 / prep = 前置詞
+   gram = 文法 / constr = 構文 / word = 語法・多義
+   目安: 言い換え一覧 → synonym か phrase、前置詞 → prep、
+         文法事項 → gram、構文 → constr、単語の多義・語法 → word
+   ===================================================================== */
 const data = [
   {id:1,cat:"同意語表現",title:"「ときどき」",badge:"synonym",items:["sometimes","on occasion","occasionally","at times","at intervals","now and then","every now and then","now and again","every now and again","once in a while","from time to time","on and off"]},
   {id:2,cat:"同意語表現",title:"「最終的に、結局」",badge:"synonym",items:["finally","eventually","ultimately","after all","at last","at length","in the end","in the long run","in the final resort","in the final analysis"]},
@@ -306,12 +324,14 @@ const data = [
   {id:74,cat:"文法",title:"en- をつけると他動詞になる語",badge:"gram",note:"sharp → sharpen\ndeep → deepen\nlarge → enlarge\nable → enable\nlength → lengthen\nstrength → strengthen\ncourage → encourage\njoy → enjoy"},
   {id:75,cat:"文法",title:"-ed をつけると「〜を持った」の形容詞になる",badge:"gram",note:"a talented man（才能を持った人）\na one-eyed monster（一つ目の怪物）\na skilled man（技術を持った人）"},
   {id:76,cat:"文法",title:"-ible / -able は [可能]+[受動]",badge:"gram",note:"unreliable = cannot be relied on\nunbelievable = cannot be believed\nindispensable = cannot be dispensed with\n\nrespectful「礼儀正しい（敬意を表する）」\nvs. respectable「尊敬されるに値する = can be respected」\n\nintolerant「我慢できない（能動）」\nvs. intolerable「我慢できない（受動）= cannot be tolerated」"},
+  // ---- ここから重要構文（K系列） ----
   {id:"K1",cat:"重要構文",title:"親切構文（9通り）",badge:"constr",note:"「彼は親切にも私を助けてくれた。」\n① He was kind enough to help me.\n② He was so kind as to help me.\n③ He was so kind that he helped me.\n④ He had the kindness to help me.\n⑤ He was (very) kind to help me.\n⑥ It was (very) kind of him to help me.\n⑦ How kind he was to help me!\n⑧ How kind of him to help me!\n⑨ He kindly helped me."},
   {id:"K2",cat:"重要構文",title:"列車構文（15通り）",badge:"constr",note:"「彼が駅に着くとすぐに列車が出発した。」\n① As soon as he arrived at the station, the train started.\n② On his arriving at the station, the train started.\n③ On his arrival at the station, the train started.\n④ He had no sooner arrived at the station than the train started.\n⑤ No sooner had he arrived at the station than the train started.\n⑥ He had hardly arrived at the station when (before) the train started.\n⑦ Hardly had he arrived at the station when (before) the train started.\n⑧ He had scarcely arrived at the station when (before) the train started.\n⑨ Scarcely had he arrived at the station when (before) the train started.\n⑩ The moment he arrived at the station, the train started.\n⑪ The instant he arrived at the station, the train started.\n⑫ The minute he arrived at the station, the train started.\n⑬ Immediately he arrived at the station, the train started.\n⑭ Directly he arrived at the station, the train started.\n⑮ Instantly he arrived at the station, the train started."},
   {id:"K3",cat:"重要構文",title:"親父構文（4通り）",badge:"constr",note:"「私の親父が死んで10年になる。」\n① My father has been dead for ten years.\n② My father died ten years ago.\n③ It is ten years since my father died.\n④ Ten years have passed since my father died."},
   {id:"K4",cat:"重要構文",title:"ドレス構文（4通り）",badge:"constr",note:"「彼女は白いドレスを着ている。」\n① She wears a white dress.\n② She is in a white dress.\n③ She has a white dress on.\n④ She is dressed in white."},
   {id:"K5",cat:"重要構文",title:"喧嘩構文（4通り）",badge:"constr",note:"「彼らは会えば必ず喧嘩する。」\n① They can't meet without quarreling.\n② They can't meet but they quarrel.\n③ Whenever they meet, they quarrel.\n④ Every time they meet, they quarrel."},
   {id:"K6",cat:"重要構文",title:"目的構文（7通り）",badge:"constr",note:"「彼は経済学を勉強するためにドイツへ行った。」\n① He went to Germany so as to study economics.\n② He went to Germany in order to study economics.\n③ He went to Germany so that he might study economics.\n④ He went to Germany in order that he might study economics.\n⑤ He went to Germany for the purpose of studying economics.\n⑥ He went to Germany with a view to studying economics.\n⑦ He went to Germany with the view of studying economics."},
+  // ---- ここから授業内の事項（a系列）。新しい項目は配列の末尾に追加 ----
   {id:"a1",cat:"語法",title:"「～しそこなう」",badge:"word",note:"fail to do「doしそこなう」\ncannot (never) fail to do「必ずdoする」（強い肯定）"},
   {id:"a2",cat:"同意語表現",title:"「約束を守る」",badge:"phrase",items:["keep one's promise","keep one's secret"]},
   {id:"a3",cat:"多義語",title:"however の多義",badge:"word",note:"① しかしながら\n② たとえどんなに～でも = no matter how"},
@@ -459,41 +479,6 @@ function renderFilters() {
     bar.appendChild(btn);
   });
 }
-
-function updateClearBtn() {
-  document.getElementById("clearBtn").disabled = !document.getElementById("searchInput").value;
-}
-
-function onSearchInput() {
-  updateClearBtn();
-  render();
-}
-
-function clearSearch() {
-  const input = document.getElementById("searchInput");
-  input.value = "";
-  updateClearBtn();
-  render();
-  input.focus();
-}
-
-// 「/」キーで検索バーにフォーカス（入力欄で文字を打っているときは除く）
-document.addEventListener("keydown", e => {
-  if (e.key !== "/" || e.ctrlKey || e.metaKey || e.altKey || e.isComposing) return;
-  const t = e.target;
-  if (t.isContentEditable || ["INPUT", "TEXTAREA", "SELECT"].includes(t.tagName)) return;
-  e.preventDefault();
-  const input = document.getElementById("searchInput");
-  input.focus();
-  input.select();
-});
-
-// 検索バーで Esc を押すとクリア（空ならフォーカスを外す）
-document.getElementById("searchInput").addEventListener("keydown", e => {
-  if (e.key !== "Escape" || e.isComposing) return;
-  if (e.target.value) clearSearch();
-  else e.target.blur();
-});
 
 renderFilters();
 render();
