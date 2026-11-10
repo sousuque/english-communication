@@ -242,7 +242,7 @@
        数値で記述（id:59）。引用符を付けない。現在 1〜76。
    ・K + 番号（例: "K1", "K2"…）: 重要構文。文字列で記述。現在 K1〜K6。
    ・a + 番号（例: "a1", "a2"…）: 授業内で扱った事項。文字列で記述。
-       現在 a1〜a75。次に追加する項目は a76 から。
+       現在 a1〜a85。次に追加する項目は a86 から。
    ・各系列とも 1 から始めて、欠番なしで連番にする。
        （各系列の最後の番号 + 1 を新しい項目に使う）
    ・項目を削除したら、後続の番号を詰めて欠番をなくす。
@@ -316,7 +316,7 @@ const data = [
   {id:42,cat:"文法",title:"that節内の訳さない should",badge:"gram",note:"意見・判断・感情を表す語の後に続く that節内に現れる should は訳さない。\n対象語: 当然・驚き・遺憾・主張・命令・要求・提案・決定"},
   {id:43,cat:"文法",title:"現在時制の will の用法",badge:"gram",note:"① 推量\n② 固執\n③ 一般的傾向、習性\n④ 習慣、反復的行為\n⑤ 意志"},
   {id:44,cat:"文法",title:"助動詞の過去形の用法",badge:"gram",note:"① 過去の意味（周りの動詞も過去の場合）\n② 仮定法（事実に反する事柄を述べる）\n③ 婉曲（断定を避けた控えめな表現）"},
-  {id:45,cat:"文法",title:"whatever の用法",badge:"gram",note:"関係代名詞: anything that（whateverが1語で名詞2つ分の働き）\n関係形容詞: any 〜 that（whatever+名詞で名詞2つ分の働き）\n疑問代名詞: no matter what（whateverが1語で名詞1つ分の働き）\n疑問形容詞: no matter what（whatever+名詞で名詞1つ分の働き）"},
+  {id:45,cat:"文法",title:"whatever の用法",badge:"gram",note:"関係代名詞: anything that（whateverが1語で名詞2つ分の働き）\n関係形容詞: any 〜 that（whatever+名詞で名詞2つ分の働き）\n疑問代名詞: no matter what（whateverが1語で名詞1つ分の働き）\n疑問形容詞: no matter what（whatever+名詞で名詞1つ分の働き）\n\n否定文中の whatsoever = at all（強調に用いられる）"},
   {id:46,cat:"文法",title:"however の用法",badge:"gram",note:"① 直後にカンマがある → 「しかしながら」\n② 直後にカンマがない → 「たとえ〜だとしても」= no matter how（譲歩の副詞）"},
   {id:47,cat:"文法",title:"引用符の用法",badge:"gram",note:"① セリフ\n② 引用\n③ 名詞化\n④ 強調\n⑤ 皮肉（irony）"},
   {id:48,cat:"文法",title:"再帰代名詞の用法",badge:"gram",note:"再帰用法: 主語自身が目的語になって再び帰ってくる\n強意用法: 同じ人称の名詞・代名詞を強調する\n※ 構造上余ったら強意用法"},
@@ -329,7 +329,7 @@ const data = [
   {id:55,cat:"同意語表現",title:"「この本は読む価値がある」",badge:"phrase",items:["This book deserves reading.","This book deserves to be read.","This book is worth reading.","This book is worthy of being read.","It is worth while to read this book.","It is worth while reading this book.","This book is worth while to read."]},
   {id:56,cat:"同意語表現",title:"「〜に頼る」",badge:"synonym",items:["depend on","count on","rely on","rest on","draw on","hang on","be dependent on","look to","turn to","resort to"]},
   {id:57,cat:"同意語表現",title:"「〜から生じる」",badge:"synonym",items:["come from","arise from","derive from","spring from","stem from","result from","follow from","is derived from"]},
-  {id:58,cat:"同意語表現",title:"「〜に慣れる、〜に順応する」",badge:"synonym",items:["get used to","become used to","get accustomed to","become accustomed to","adapt oneself to","be adapted to","adapt to","adjust oneself to","be adjusted to","adjust to","accommodate oneself to","be accommodated to","accommodate to"]},
+  {id:58,cat:"同意語表現",title:"「〜に慣れる、〜に順応する」",badge:"synonym",items:["get used to","become used to","get accustomed to","become accustomed to","adapt oneself to","be adapted to","adapt to","adjust oneself to","be adjusted to","adjust to","accommodate oneself to","be accommodated to","accommodate to","be used to","be accustomed to"],note:"be used to = be accustomed to\nbe used to の to は前置詞（後ろは名詞や動名詞）\nbe accustomed to の to は前置詞だけど後ろに動詞を取れる"},
   {id:59,cat:"同意語表現",title:"「AをBとみなす」",badge:"phrase",items:["regard A as B","look on A as B","think of A as B","conceive of A as B","consider A (as) B","see A as B","view A as B","take A as B"],extra:[{label:"関連表現",items:["define A as B（AをBと定義する）","refer to A as B（AをBと呼ぶ）","strike A as B（AにBという印象を与える）","impress A as B（AにBという印象を与える）"]}]},
   {id:60,cat:"語法",title:"apply の用法",badge:"word",note:"apply A to B 「AをBに当てはめる」\napply to 「〜に当てはめる」\napply for 「〜に申し込む・志願する・応募する」\napplication:\n  ① 適用・応用・当てはめ\n  ② 申し込み・志願・応募\n  ③ 専念・集中"},
   {id:61,cat:"同意語表現",title:"「〜に当てはまる」",badge:"synonym",items:["apply to","be applied to","be true of","hold true of","be the case with","be so with","go with","refer to"]},
@@ -430,7 +430,17 @@ const data = [
   {id:"a72",cat:"多義語",title:"realize の多義",badge:"word",note:"① 「～を悟る」\n② 「～を実現する」"},
   {id:"a73",cat:"多義語",title:"tame の多義",badge:"word",note:"動詞: 飼いならす\n形容詞: おとなしい\n\ntame animals = domestic animals ⇔ wild animals"},
   {id:"a74",cat:"語彙",title:"反意語ペア（接頭辞 dis-）",badge:"word",note:"honest ⇔ dishonest\nobedient ⇔ disobedient"},
-  {id:"a75",cat:"同意語表現",title:"「～を明らかにする」",badge:"synonym",items:["shed light on","bring ~ to light","solve","reveal"]}
+  {id:"a75",cat:"同意語表現",title:"「～を明らかにする」",badge:"synonym",items:["shed light on","bring ~ to light","solve","reveal"]},
+  {id:"a76",cat:"多義語",title:"follow の多義",badge:"word",note:"① 「～について行く」= accompany\n② 「～に従う」= obey\n\nTuesday follows Monday.\n= Monday is followed by Tuesday.\n「月曜日の次は火曜日だ。」"},
+  {id:"a77",cat:"文法",title:"動詞が省略される場合",badge:"gram",note:"Shimura likes coffee and Kato tea.\n← Kato の後に likes が省略されている。"},
+  {id:"a78",cat:"語彙",title:"in return",badge:"word",note:"「お返しに、返礼として」"},
+  {id:"a79",cat:"語法",title:"be certain to V",badge:"word",note:"be certain to V「きっとVするはずだ」= be sure to V"},
+  {id:"a80",cat:"文法",title:"命令文の受動態（Don't let O be Vpp）",badge:"gram",note:"Do it at once.\n→ Let it be done at once.\n\nDon't forget this important lesson.\n→ Don't let this important lesson be forgotten."},
+  {id:"a81",cat:"語法",title:"remember の後ろ",badge:"word",note:"to V のとき「(これからすることを)覚えている」\nVing のとき「(過去に～したことを)覚えている」"},
+  {id:"a82",cat:"文法",title:"比較級の言い換え",badge:"gram",note:"as many as = no less than「～もの数の」\nno more than = only「たったの～」\nnot more than = at most「せいぜい、多くても」\nnot less than = at least「少なくとも」"},
+  {id:"a83",cat:"文法",title:"関係形容詞の what, whatever",badge:"gram",note:"what = all the ~ that\nwhatever = any ~ that"},
+  {id:"a84",cat:"同意語表現",title:"「案の定」",badge:"synonym",items:["as might have been expected"]},
+  {id:"a85",cat:"同意語表現",title:"「～せずにはいられない」",badge:"synonym",items:["cannot help Ving","cannot but V(原形)","cannot help but V(原形)"]}
 ];
 
 const cats = ["すべて","同意語表現","前置詞","文法","多義語","語法","語彙","重要構文"];
