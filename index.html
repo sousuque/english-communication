@@ -242,7 +242,7 @@
        数値で記述（id:59）。引用符を付けない。現在 1〜76。
    ・K + 番号（例: "K1", "K2"…）: 重要構文。文字列で記述。現在 K1〜K6。
    ・a + 番号（例: "a1", "a2"…）: 授業内で扱った事項。文字列で記述。
-       現在 a1〜a89。次に追加する項目は a90 から。
+       現在 a1〜a119。次に追加する項目は a120 から。
    ・各系列とも 1 から始めて、欠番なしで連番にする。
        （各系列の最後の番号 + 1 を新しい項目に使う）
    ・項目を削除したら、後続の番号を詰めて欠番をなくす。
@@ -444,7 +444,37 @@ const data = [
   {id:"a86",cat:"多義語",title:"spell の多義",badge:"word",note:"他動詞: 綴る\n名詞: ① 期間　② 呪文\n名詞: spelling「綴り」"},
   {id:"a87",cat:"語彙",title:"behind the wheel ／ take the wheel",badge:"word",note:"behind the wheel「運転して」\ntake the wheel「ハンドルを握る」"},
   {id:"a88",cat:"同意語表現",title:"「姓、名字」",badge:"synonym",items:["surname","family name","last name"]},
-  {id:"a89",cat:"文法",title:"名詞を修飾する所有格・of ~ の意味（主格関係・目的格関係）",badge:"gram",note:"【動作名詞を修飾する所有格または of ~】\n・主格関係　・目的格関係\nmy father's death = the death of my father（my father は意味上の主語）\nthe baby's rescue = the rescue of the baby（the baby は意味上の目的語）\n★ our use of language のとき、our は主格、language は目的格となる。\n\n【形容詞の名詞形を修飾する所有格または of ~】\n・主格関係\nthe flower's beauty = the beauty of the flower\n\n【上記2つの注意】\nthe change of colour「色の変化」\nこのときの of は主格。\n動作が自然現象であれば主格、人為的な動作であれば目的格で取る。\n\nThey were exposed to criticism.「彼らは批判にさらされた。」\n→ the exposure of them to criticism\n受動態になっているときは目的格で取ると良い。"}
+  {id:"a89",cat:"文法",title:"名詞を修飾する所有格・of ~ の意味（主格関係・目的格関係）",badge:"gram",note:"【動作名詞を修飾する所有格または of ~】\n・主格関係　・目的格関係\nmy father's death = the death of my father（my father は意味上の主語）\nthe baby's rescue = the rescue of the baby（the baby は意味上の目的語）\n★ our use of language のとき、our は主格、language は目的格となる。\n\n【形容詞の名詞形を修飾する所有格または of ~】\n・主格関係\nthe flower's beauty = the beauty of the flower\n\n【上記2つの注意】\nthe change of colour「色の変化」\nこのときの of は主格。\n動作が自然現象であれば主格、人為的な動作であれば目的格で取る。\n\nThey were exposed to criticism.「彼らは批判にさらされた。」\n→ the exposure of them to criticism\n受動態になっているときは目的格で取ると良い。"},
+  {id:"a90",cat:"語法",title:"beside ／ besides",badge:"word",note:"beside\n前置詞:「～のそばに」= by\n副詞:「そばに」= by = in addition to\n\nbesides\n前置詞:「～のほかに、～に加えて」\n副詞:「さらに、そのうえ」= in addition"},
+  {id:"a91",cat:"語法",title:"get on with ~",badge:"word",note:"get on (very well) with ~「～が順調に進む」"},
+  {id:"a92",cat:"文法",title:"他動詞＋副詞（try on など）の語順",badge:"gram",note:"May I try these shoes on? = May I try on these shoes?\n他動詞と副詞があるときは両方成り立つ。\n\nMay I try them on?\n名詞が代名詞になっているときはこの語順しか成り立たない。"},
+  {id:"a93",cat:"多義語",title:"become の多義",badge:"word",note:"自動詞:（補語をとるとき）「Cになる」\n　become of ~（通常は what を主語にとる）\n　what will become of ~「～はこれからどうなるか」\n　what has become of ~「～はあれからどうなったか」\n他動詞:「～に似合う」= suit = match\n　This dress becomes (suits) you.\n　This dress matches (goes with) the hat.\n\nIt ill becomes you to complain.\n「文句を言うなんてあなたらしくない。」（ill は副詞）"},
+  {id:"a94",cat:"語彙",title:"on one's own",badge:"word",note:"on one's own「自力で、～自身で」"},
+  {id:"a95",cat:"語法",title:"far from ~",badge:"word",note:"far from ~（副詞）「全く～ない」（強い否定）\n= not at all = anything but"},
+  {id:"a96",cat:"語法",title:"read of",badge:"word",note:"read of = read about「～について読んで知る」"},
+  {id:"a97",cat:"語彙",title:"intensively",badge:"word",note:"「徹底的に、猛烈に、強烈に、集中的に」"},
+  {id:"a98",cat:"文法",title:"cannot V too ~",badge:"gram",note:"cannot V too ~「～してもしすぎることはない」\nYou cannot be too careful in crossing a street.\n（in は時の意味）"},
+  {id:"a99",cat:"多義語",title:"too の多義",badge:"word",note:"① 過度「あまりに～しすぎ」（必ず後ろに形容詞または副詞）\n② 付加・追加・添加「～もまた」= also"},
+  {id:"a100",cat:"語法",title:"end up Ving",badge:"word",note:"end up Ving「結局Vする、Vして終わる」"},
+  {id:"a101",cat:"多義語",title:"build up の多義",badge:"word",note:"① 他動詞「～を築き上げる」\n② 自動詞「（緊張・ストレスなどが）高まる」"},
+  {id:"a102",cat:"文法",title:"修辞疑問文",badge:"gram",note:"Who knows S V ~? = No one knows ~."},
+  {id:"a103",cat:"同意語表現",title:"「もし～ならば」（if の言いかえ）",badge:"synonym",items:["provided","providing","suppose","supposing","given","giving","on condition that","as long as"]},
+  {id:"a104",cat:"文法",title:"given の用法",badge:"gram",note:"接続詞として: if と同じ\ngiven that ~ の形で:「～を考慮すれば」\n※ 多義は No.38 を参照"},
+  {id:"a105",cat:"同意語表現",title:"「似ている」",badge:"synonym",items:["look like","resemble","take after"]},
+  {id:"a106",cat:"同意語表現",title:"「～を世話する」",badge:"synonym",items:["look after","take care of","care for"]},
+  {id:"a107",cat:"語法",title:"something of a ~ ／ not much of a ~",badge:"word",note:"something of a ~「ちょっとした～」\nnot much of a ~「たいした～ではない」"},
+  {id:"a108",cat:"語法",title:"make do with ~",badge:"word",note:"make do with ~「～で間に合わせる、～で何とかやりくりする」"},
+  {id:"a109",cat:"文法",title:"前置詞句を修飾できる語",badge:"gram",note:"right, far\nHe is far behind me."},
+  {id:"a110",cat:"多義語",title:"pay（自動詞）の多義",badge:"word",note:"① 割に合う\n② もうかる\n③ 有益である"},
+  {id:"a111",cat:"多義語",title:"satisfy の多義",badge:"word",note:"人を目的語にとる:「満足させる」\nneed などを目的語にとる:「満たす」= meet = gratify"},
+  {id:"a112",cat:"文法",title:"単数名詞を修飾する some",badge:"gram",note:"「ある～」"},
+  {id:"a113",cat:"多義語",title:"may well do の多義",badge:"word",note:"① 「Vするのも当然だ」\n② 「Vするかもしれない」"},
+  {id:"a114",cat:"同意語表現",title:"「～を熱望する」",badge:"synonym",items:["be eager to V","long to V","long for ~"]},
+  {id:"a115",cat:"語法",title:"the key to ~",badge:"word",note:"the key to ~「～のカギ」"},
+  {id:"a116",cat:"語彙",title:"blind ／ deaf の婉曲表現",badge:"word",note:"blind = visually-impaired\ndeaf = hearing-impaired"},
+  {id:"a117",cat:"語彙",title:"「習慣」（habit, practice, rule）",badge:"word",note:"habit, practice, rule\n習慣 ≠ 慣習\n習慣 → 個人のこと\n慣習 → 社会的なこと"},
+  {id:"a118",cat:"同意語表現",title:"「Vすることを習慣にする」",badge:"phrase",items:["make it a rule to V","make it a habit to V","make it a practice to V","be in the habit of Ving","It is the habit with 人 to V"]},
+  {id:"a119",cat:"同意語表現",title:"「～の役割をやり通す、果たす」",badge:"phrase",items:["keep up one's end of ~","do one's part of ~"]}
 ];
 
 const cats = ["すべて","同意語表現","前置詞","文法","多義語","語法","語彙","重要構文"];
